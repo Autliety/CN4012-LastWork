@@ -52,6 +52,7 @@ public class CreateUI extends JFrame implements ActionListener {
           Main.listPro.add(new Product(s, i, d));
           GUI.namelist.addItem(s);
           GUI.namelist.setSelectedItem(s);
+          this.dispose();
         } else {
           JOptionPane.showMessageDialog(null, "StockLevel and price should be positive!", "ERROR", JOptionPane.ERROR_MESSAGE);
         }
@@ -59,6 +60,8 @@ public class CreateUI extends JFrame implements ActionListener {
         JOptionPane.showMessageDialog(null, "Value error, create failed", "ERROR", JOptionPane.ERROR_MESSAGE);
       }
     }
-    this.dispose();
+    nameen.setText("");
+    lvlen.setText("");
+    priceen.setText("");
   }
 }
