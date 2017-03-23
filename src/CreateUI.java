@@ -48,7 +48,7 @@ public class CreateUI extends JFrame implements ActionListener {
         String s = nameen.getText();
         int i = Integer.parseInt(lvlen.getText());
         double d = Double.parseDouble(priceen.getText());
-        if ( i > 0 && d > 0) {
+        if (i > 0 && d > 0) {
           Main.listPro.add(new Product(s, i, d));
           GUI.namelist.addItem(s);
           GUI.namelist.setSelectedItem(s);

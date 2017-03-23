@@ -7,6 +7,7 @@ import java.util.ArrayList;
  */
 public class Main {
   public static ArrayList listPro = new ArrayList();
+
   public static void main(String[] args) {
     new GUI();
   }
