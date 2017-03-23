@@ -5,8 +5,9 @@ import java.util.ArrayList;
  * @date: 2017/3/20
  */
 public class Main {
+  public static ArrayList listPro = new ArrayList();
   public static void main(String[] args) {
-    GUI g = new GUI();
-    g.setVisible(true);
+    CreatUI c = new CreatUI();
+    c.setVisible(true);
   }
 }
