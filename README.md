@@ -1,7 +1,7 @@
-ProductManagement
+-CN4102-LastWork
 
--CN4012 last work
+-ProductManager
 
 -@Author: Autliety
 
--Souse code in src/
+**-Souse code available in /src folder**
