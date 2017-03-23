@@ -97,7 +97,7 @@ public class GUI extends JFrame implements ActionListener, ItemListener {
               JOptionPane.showMessageDialog(null, "Value error, too much sold!", "ERROR", JOptionPane.ERROR_MESSAGE);
             } else {
               JOptionPane.showMessageDialog(null, sold + " pieces of product sold out \n$" +
-                      i + " income have got!", "Sold successfully", JOptionPane.OK_OPTION);
+                      i + " income have got!", "Sold successfully", JOptionPane.INFORMATION_MESSAGE);
             }
           }
         } catch (NumberFormatException error) {
