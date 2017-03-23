@@ -44,15 +44,21 @@ public class CreateUI extends JFrame implements ActionListener {
 
   public void actionPerformed(ActionEvent e) {
     if (e.getSource() == create) {
-      String s = nameen.getText();
-      int i = Integer.parseInt(lvlen.getText());
-      double d = Double.parseDouble(priceen.getText());
-      if (Main.listPro.add(new Product(s, i, d))) {
-        GUI.namelist.addItem(s);
-        GUI.namelist.setSelectedItem(s);
+      try {
+        String s = nameen.getText();
+        int i = Integer.parseInt(lvlen.getText());
+        double d = Double.parseDouble(priceen.getText());
+        if ( i > 0 && d > 0) {
+          Main.listPro.add(new Product(s, i, d));
+          GUI.namelist.addItem(s);
+          GUI.namelist.setSelectedItem(s);
+        } else {
+          JOptionPane.showMessageDialog(null, "StockLevel and price should be positive!", "ERROR", JOptionPane.ERROR_MESSAGE);
+        }
+      } catch (NumberFormatException error) {
+        JOptionPane.showMessageDialog(null, "Value error, create failed", "ERROR", JOptionPane.ERROR_MESSAGE);
       }
-      //JOptionPane.showMessageDialog(null, "Value error, Create failed", "ERROR", JOptionPane.ERROR_MESSAGE);
     }
-    setVisible(false);
+    this.dispose();
   }
 }

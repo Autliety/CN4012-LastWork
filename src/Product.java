@@ -6,6 +6,7 @@ public class Product {
   private String name;
   private int stockLevel;
   private double price;
+  public static boolean ifRight = true;
 
   public Product(String nameInit, int stockLevelInit, double priceInit) {
     name = nameInit;
@@ -14,28 +15,27 @@ public class Product {
   }
 
   public int reStock(int stockLevelReStock) {
-    stockLevel += stockLevelReStock;
-    return stockLevel;
+    if (stockLevelReStock < 0) {
+      return -514;
+    } else {
+      stockLevel += stockLevelReStock;
+      return stockLevel;
+    }
   }
 
   public double sell(int stockLevelSell) {
     if (stockLevelSell < 0) {
-      //illegal sell
-      return -1;
-    } else if (stockLevelSell > stockLevel) {
-      //too more sell
       return -514;
+    } else if (stockLevelSell > stockLevel) {
+      return -223;
     } else {
       stockLevel -= stockLevelSell;
-      double cost = price * stockLevelSell;
-      return cost;
+      return price * stockLevelSell;
     }
   }
 
   public void setPrice(double priceSetPrice) {
-    if (priceSetPrice <0) {
-      //illegal price
-    } else {
+    if (priceSetPrice > 0) {
       price = priceSetPrice;
     }
   }

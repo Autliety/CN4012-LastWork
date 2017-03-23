@@ -21,7 +21,7 @@ public class GUI extends JFrame implements ActionListener, ItemListener {
   private JButton restock = new JButton("restock");
   private JButton reprice = new JButton("reprice");
   private JButton sell = new JButton("be sold");
-  private JTextArea information = new JTextArea("test", 6, 32);
+  private JTextArea information = new JTextArea("  Click 'Create' to add a new product.", 6, 32);
   public static JComboBox namelist = new JComboBox();
 
   private int pickup = 0;
@@ -77,12 +77,31 @@ public class GUI extends JFrame implements ActionListener, ItemListener {
         JOptionPane.showMessageDialog(null, " Create a new product please!", "ERROR", JOptionPane.ERROR_MESSAGE);
       } else {
         String s = enterValue.getText();
-        if (e.getSource() == restock) {
-          pickuppro.reStock(Integer.parseInt(s));
-        } else if (e.getSource() == reprice) {
-          pickuppro.setPrice(Double.parseDouble(s));
-        } else if (e.getSource() == sell) {
-          pickuppro.sell(Integer.parseInt(s));
+        try {
+          if (e.getSource() == restock) {
+            if (pickuppro.reStock(Integer.parseInt(s)) < 0) {
+              JOptionPane.showMessageDialog(null, "re-stock value should be positive!", "ERROR", JOptionPane.ERROR_MESSAGE);
+            }
+          } else if (e.getSource() == reprice) {
+            double priin = Double.parseDouble(s);
+            pickuppro.setPrice(priin);
+            if (priin < 0) {
+              JOptionPane.showMessageDialog(null, "price should be positive!", "ERROR", JOptionPane.ERROR_MESSAGE);
+            }
+          } else if (e.getSource() == sell) {
+            int sold = Integer.parseInt(s);
+            double i = pickuppro.sell(sold);
+            if (i == -514) {
+              JOptionPane.showMessageDialog(null, "sell-number should be positive!", "ERROR", JOptionPane.ERROR_MESSAGE);
+            } else if (i == -223) {
+              JOptionPane.showMessageDialog(null, "Value error, too much sold!", "ERROR", JOptionPane.ERROR_MESSAGE);
+            } else {
+              JOptionPane.showMessageDialog(null, sold + " pieces of product sold out \n$" +
+                      i + " income have got!", "Sold successfully", JOptionPane.OK_OPTION);
+            }
+          }
+        } catch (NumberFormatException error) {
+          JOptionPane.showMessageDialog(null, "Value error, action failed", "ERROR", JOptionPane.ERROR_MESSAGE);
         }
         ChangeText(pickuppro);
       }
@@ -96,7 +115,13 @@ public class GUI extends JFrame implements ActionListener, ItemListener {
   }
 
   private void ChangeText(Product pick) {
-    information.setText(pick.getName() + pick.getStockLevel() + pick.getPrice());
+    if (Main.listPro.isEmpty()) {
+      information.setText("  Click 'Create' to add a new product.");
+    } else {
+      information.setText("  Product Name: " + pick.getName() +
+              "\n  Stock Level: " + pick.getStockLevel() +
+              "\n  Price: $" + pick.getPrice());
+    }
   }
 
 }
