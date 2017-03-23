@@ -18,8 +18,8 @@ public class GUI extends JFrame implements ActionListener, ItemListener {
   private JPanel pickPanel = new JPanel(new FlowLayout());
   private JPanel infoPanel = new JPanel(new FlowLayout());
   private JTextField enterValue = new JTextField("0", 5);
-  private JButton restock = new JButton("restock");
-  private JButton reprice = new JButton("reprice");
+  private JButton restock = new JButton("re-stock");
+  private JButton reprice = new JButton("re-price");
   private JButton sell = new JButton("be sold");
   private JTextArea information = new JTextArea("  Click 'Create' to add a new product.", 6, 32);
   public static JComboBox namelist = new JComboBox();
