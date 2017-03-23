@@ -16,25 +16,23 @@ public class GUI extends JFrame implements ActionListener {
   private JMenuItem newone = new JMenuItem("a new product");
   private JMenuItem thisapp = new JMenuItem("this app");
 
-  /*private JTextField nameCreat = new JTextField(5);
-  private JTextField stockCreat = new JTextField(5);
-  private JTextField priceCreat = new JTextField(5);
-  private JButton productCreat = new JButton("Creat");*/
+  private JPanel topPanel = new JPanel(new FlowLayout());
+  private JPanel midPanel = new JPanel(new FlowLayout());
+  private JPanel botPanel = new JPanel(new FlowLayout());
 
   private JTextField enterValue = new JTextField(5);
   private JButton restock = new JButton("restock");
   private JButton reprice = new JButton("reprice");
   private JButton sell = new JButton("be sold");
 
-
+  private Product testpro = new Product("whiteFF", 6, 23.3);
 
   public GUI() {
     setTitle("Product Manager - u1537697");
-    setSize(500, 500);
+    setSize(450, 500);
     setLocation(300, 300);
     setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    setLayout(new FlowLayout());
-    //productCreat.addActionListener(this);
+
     restock.addActionListener(this);
     reprice.addActionListener(this);
     sell.addActionListener(this);
@@ -45,19 +43,14 @@ public class GUI extends JFrame implements ActionListener {
     menuAdd.add(newone);
     menuHelp.add(thisapp);
 
+    add(BorderLayout.NORTH, topPanel);
+    add(BorderLayout.CENTER, midPanel);
+    add(BorderLayout.SOUTH, botPanel);
 
-    /*add(new JLabel(" name:"));
-    add(nameCreat);
-    add(new JLabel(" stocklvl:"));
-    add(stockCreat);
-    add(new JLabel(" price:"));
-    add(priceCreat);
-    add(productCreat);*/
-
-    add(enterValue);
-    add(restock);
-    add(reprice);
-    add(sell);
+    topPanel.add(enterValue);
+    topPanel.add(reprice);
+    topPanel.add(restock);
+    topPanel.add(sell);
 
 
 
