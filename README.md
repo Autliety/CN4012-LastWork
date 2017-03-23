@@ -1,5 +1,7 @@
 ProductManagement
 
-CN4012 last work
+-CN4012 last work
 
-by: Autliety
+-@Author: Autliety
+
+-Souse code in src/
