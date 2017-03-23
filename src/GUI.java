@@ -15,7 +15,6 @@ public class GUI extends JFrame implements ActionListener {
   private JPanel botPanel = new JPanel();
 
   private JTextField value = new JTextField(15);
-  private JButton
 
   public GUI() {
     setTitle("Product Manager - u1537697");
