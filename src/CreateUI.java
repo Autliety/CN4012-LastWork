@@ -1,3 +1,5 @@
+import com.sun.tools.javac.code.Attribute;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -7,24 +9,24 @@ import java.awt.event.ActionListener;
  * @Author: Autliety
  * @date: 2017/3/23
  */
-public class CreatUI extends JFrame implements ActionListener {
+public class CreateUI extends JFrame implements ActionListener {
 
   private JPanel conf = new JPanel(new FlowLayout());
   private JTextField nameen = new JTextField(15);
   private JTextField lvlen = new JTextField(15);
   private JTextField priceen = new JTextField(15);
-  private JButton creat = new JButton("Creat");
+  private JButton create = new JButton("Create");
   private JButton cancel = new JButton("Cancel");
 
-  public CreatUI() {
 
-    setTitle("Creat a new product");
-    setSize(300, 170);
+  public CreateUI() {
+
+    setTitle("Create a new product");
+    setSize(350, 170);
     setLocation(300, 300);
-    setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    setVisible(false);
+    setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     setLayout(new FlowLayout());
-
+    setVisible(true);
 
     add(new JLabel("Name:         "));
     add(nameen);
@@ -33,19 +35,23 @@ public class CreatUI extends JFrame implements ActionListener {
     add(new JLabel("Price:          "));
     add(priceen);
     add(BorderLayout.SOUTH, conf);
-    conf.add(creat);
+    conf.add(create);
     conf.add(cancel);
 
-    creat.addActionListener(this);
+    create.addActionListener(this);
     cancel.addActionListener(this);
   }
 
   public void actionPerformed(ActionEvent e) {
-    if (e.getSource() == creat) {
+    if (e.getSource() == create) {
       String s = nameen.getText();
       int i = Integer.parseInt(lvlen.getText());
       double d = Double.parseDouble(priceen.getText());
-      Main.listPro.add(new Product(s, i, d));
+      if (Main.listPro.add(new Product(s, i, d))) {
+        GUI.namelist.addItem(s);
+        GUI.namelist.setSelectedItem(s);
+      }
+      //JOptionPane.showMessageDialog(null, "Value error, Create failed", "ERROR", JOptionPane.ERROR_MESSAGE);
     }
     setVisible(false);
   }

@@ -1,3 +1,4 @@
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 /**
@@ -7,7 +8,6 @@ import java.util.ArrayList;
 public class Main {
   public static ArrayList listPro = new ArrayList();
   public static void main(String[] args) {
-    CreatUI c = new CreatUI();
-    c.setVisible(true);
+    new GUI();
   }
 }
