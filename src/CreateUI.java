@@ -56,9 +56,12 @@ public class CreateUI extends JFrame implements ActionListener {
       } catch (NumberFormatException error) {
         JOptionPane.showMessageDialog(null, "Value error, create failed", "ERROR", JOptionPane.ERROR_MESSAGE);
       }
+      nameen.setText("");
+      lvlen.setText("");
+      priceen.setText("");
     }
-    nameen.setText("");
-    lvlen.setText("");
-    priceen.setText("");
+    if (e.getSource() == cancel) {
+      this.dispose();
+    }
   }
 }
