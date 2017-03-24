@@ -6,7 +6,7 @@ import java.awt.event.*;
  * @Author: Autliety
  * @date: 2017/3/20
  */
-public class GUI extends JFrame implements ActionListener, ItemListener {
+public class MainUI extends JFrame implements ActionListener, ItemListener {
 
   private JMenuBar menuBar = new JMenuBar();
   private JMenu menuAdd = new JMenu("Create");
@@ -20,7 +20,7 @@ public class GUI extends JFrame implements ActionListener, ItemListener {
   private JTextField enterValue = new JTextField("0", 5);
   private JButton restock = new JButton("re-stock");
   private JButton reprice = new JButton("re-price");
-  private JButton sell = new JButton("be sold");
+  private JButton sell = new JButton("SELL OUT");
   private JTextArea information = new JTextArea("  Click 'Create' to add a new product.", 6, 32);
   public static JComboBox namelist = new JComboBox();
 
@@ -28,7 +28,7 @@ public class GUI extends JFrame implements ActionListener, ItemListener {
   private Product pickuppro;
 
 
-  public GUI() {
+  public MainUI() {
 
     setTitle("Product Manager - u1537697");
     setSize(450, 230);

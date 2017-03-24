@@ -1,5 +1,3 @@
-import com.sun.tools.javac.code.Attribute;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -17,7 +15,6 @@ public class CreateUI extends JFrame implements ActionListener {
   private JTextField priceen = new JTextField(15);
   private JButton create = new JButton("Create");
   private JButton cancel = new JButton("Cancel");
-
 
   public CreateUI() {
 
@@ -50,8 +47,8 @@ public class CreateUI extends JFrame implements ActionListener {
         double d = Double.parseDouble(priceen.getText());
         if (i > 0 && d > 0) {
           Main.listPro.add(new Product(s, i, d));
-          GUI.namelist.addItem(s);
-          GUI.namelist.setSelectedItem(s);
+          MainUI.namelist.addItem(s);
+          MainUI.namelist.setSelectedItem(s);
           this.dispose();
         } else {
           JOptionPane.showMessageDialog(null, "StockLevel and price should be positive!", "ERROR", JOptionPane.ERROR_MESSAGE);

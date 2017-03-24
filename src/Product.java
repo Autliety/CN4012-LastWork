@@ -6,7 +6,6 @@ public class Product {
   private String name;
   private int stockLevel;
   private double price;
-  public static boolean ifRight = true;
 
   public Product(String nameInit, int stockLevelInit, double priceInit) {
     name = nameInit;
