@@ -95,7 +95,7 @@ public class MainUI extends JFrame implements ActionListener, ItemListener {
         } catch (NumberFormatException er) {
           JOptionPane.showMessageDialog(null, "Number Format Error, check your enter please.", "ERROR", JOptionPane.ERROR_MESSAGE);
         } catch (Exception er) {
-          JOptionPane.showMessageDialog(null, er, "ERROR", JOptionPane.ERROR_MESSAGE);
+          JOptionPane.showMessageDialog(null, er.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE);
         }
       }
     }

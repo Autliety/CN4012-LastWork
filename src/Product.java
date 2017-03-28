@@ -10,12 +10,12 @@ public class Product {
   public Product(String nameInit, int stockLevelInit, double priceInit) throws Exception {
     name = nameInit;
     if (stockLevelInit <= 0 ) {
-      throw new Exception("Stock level must be positive.");
+      throw new Exception("Please enter a positive value for stock level.");
     } else {
       stockLevel = stockLevelInit;
     }
     if (priceInit <= 0) {
-      throw new Exception("Price must be positive.");
+      throw new Exception("Please enter a positive value for price");
     } else {
       price = priceInit;
     }
@@ -23,7 +23,7 @@ public class Product {
 
   public int reStock(int stockLevelReStock) throws Exception {
     if (stockLevelReStock < 0) {
-      throw new Exception("Stock level must be positive.");
+      throw new Exception("Please enter a positive value for stock level.");
     } else {
       stockLevel += stockLevelReStock;
       return stockLevel;
@@ -32,9 +32,9 @@ public class Product {
 
   public double sell(int stockLevelSell) throws Exception {
     if (stockLevelSell < 0) {
-      throw new Exception("Sell number must be positive.");
+      throw new Exception("Please enter a positive value for sell number.");
     } else if (stockLevelSell > stockLevel) {
-      throw new Exception("Sold too much!");
+      throw new Exception("Please enter a sell number no more than stock level");
     } else {
       stockLevel -= stockLevelSell;
       return price * stockLevelSell;
