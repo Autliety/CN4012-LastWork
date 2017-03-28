@@ -1,3 +1,5 @@
+import javafx.beans.property.adapter.JavaBeanObjectProperty;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -45,20 +47,15 @@ public class CreateUI extends JFrame implements ActionListener {
         String s = nameen.getText();
         int i = Integer.parseInt(lvlen.getText());
         double d = Double.parseDouble(priceen.getText());
-        if (i > 0 && d > 0) {
-          Main.listPro.add(new Product(s, i, d));
-          MainUI.namelist.addItem(s);
-          MainUI.namelist.setSelectedItem(s);
-          this.dispose();
-        } else {
-          JOptionPane.showMessageDialog(null, "StockLevel and price should be positive!", "ERROR", JOptionPane.ERROR_MESSAGE);
-        }
-      } catch (NumberFormatException error) {
+        Main.listPro.add(new Product(s, i, d));
+        MainUI.namelist.addItem(s);
+        MainUI.namelist.setSelectedItem(s);
+        this.dispose();
+      } catch (NumberFormatException er) {
         JOptionPane.showMessageDialog(null, "Value error, create failed", "ERROR", JOptionPane.ERROR_MESSAGE);
+      } catch (Exception er) {
+        JOptionPane.showMessageDialog(null, er, "ERROR", JOptionPane.ERROR_MESSAGE);
       }
-      nameen.setText("");
-      lvlen.setText("");
-      priceen.setText("");
     }
     if (e.getSource() == cancel) {
       this.dispose();

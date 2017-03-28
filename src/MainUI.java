@@ -79,33 +79,27 @@ public class MainUI extends JFrame implements ActionListener, ItemListener {
         String s = enterValue.getText();
         try {
           if (e.getSource() == restock) {
-            if (pickuppro.reStock(Integer.parseInt(s)) < 0) {
-              JOptionPane.showMessageDialog(null, "re-stock value should be positive!", "ERROR", JOptionPane.ERROR_MESSAGE);
-            }
-          } else if (e.getSource() == reprice) {
-            double priin = Double.parseDouble(s);
-            pickuppro.setPrice(priin);
-            if (priin < 0) {
-              JOptionPane.showMessageDialog(null, "price should be positive!", "ERROR", JOptionPane.ERROR_MESSAGE);
-            }
-          } else if (e.getSource() == sell) {
-            int sold = Integer.parseInt(s);
-            double i = pickuppro.sell(sold);
-            if (i == -514) {
-              JOptionPane.showMessageDialog(null, "sell-number should be positive!", "ERROR", JOptionPane.ERROR_MESSAGE);
-            } else if (i == -223) {
-              JOptionPane.showMessageDialog(null, "Value error, too much sold!", "ERROR", JOptionPane.ERROR_MESSAGE);
-            } else {
-              JOptionPane.showMessageDialog(null, sold + " pieces of product sold out \n$" +
-                      i + " income have got!", "Sold successfully", JOptionPane.INFORMATION_MESSAGE);
-            }
+            int stockIn = Integer.parseInt(s);
+            pickuppro.reStock(stockIn);
           }
-        } catch (NumberFormatException error) {
-          JOptionPane.showMessageDialog(null, "Value error, action failed", "ERROR", JOptionPane.ERROR_MESSAGE);
+          if (e.getSource() == reprice) {
+            double priceIn = Double.parseDouble(s);
+            pickuppro.setPrice(priceIn);
+          }
+          if (e.getSource() == sell) {
+            int sellIn = Integer.parseInt(s);
+            double i = pickuppro.sell(sellIn);
+            JOptionPane.showMessageDialog(null, sellIn + " pieces of product sold out \n$" +
+                    i + " income have got!", "Sold successfully", JOptionPane.INFORMATION_MESSAGE);
+          }
+        } catch (NumberFormatException er) {
+          JOptionPane.showMessageDialog(null, "Number Format Error, check your enter please.", "ERROR", JOptionPane.ERROR_MESSAGE);
+        } catch (Exception er) {
+          JOptionPane.showMessageDialog(null, er, "ERROR", JOptionPane.ERROR_MESSAGE);
         }
-        ChangeText(pickuppro);
       }
     }
+    ChangeText(pickuppro);
   }
 
   public void itemStateChanged(ItemEvent e) {
