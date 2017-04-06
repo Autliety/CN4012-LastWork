@@ -2,6 +2,6 @@
 
 -ProductManager
 
--@Author: Autliety
+-@author Autliety
 
-**-Souse code available in /src folder**
+**-Sourse code available in /src folder**
